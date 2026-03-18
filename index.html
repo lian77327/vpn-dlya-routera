@@ -1,1 +1,1445 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ТОП-6 ВПН для роутера, которые обойдут блокировку в России в 2025 году 24.02.2026 | настройка VPN </title>
+    <meta name="description" content="Полный гайд по выбору и настройке VPN на роутере в 2026 году. VLESS, AmneziaWG, WireGuard на Keenetic, OpenWrt, Asus, TP-Link. Пошаговые инструкции. Разблокируйте YouTube, Discord и Instagram на всех устройствах дома: Smart TV, PS5, iPhone. Раздельное туннелирование, выбор роутера, сравнение протоколов.">
+    <link rel="canonical" href="https://vpn-dlya-routera.vercel.app/">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="VPN для роутера 2026 - обход блокировок YouTube на всех устройствах">
+    <meta property="og:description" content="Настройка VPN на роутере Keenetic, OpenWrt, Asus, TP-Link. VLESS Reality, AmneziaWG, WireGuard. Пошаговые инструкции. Разблокировка YouTube, Discord, Instagram для всей семьи.">
+    <meta property="og:url" content="https://vpn-dlya-routera.vercel.app/">
+    <meta property="og:locale" content="ru_RU">
+    <meta name="robots" content="index, follow">
+    <meta name="yandex-verification" content="9c5da40b2cc8534a" />
+    <meta name="google-site-verification" content="hhW-dyOckTMU1fbPhTPISsy1io51xTutblkXaizM5KI" />
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Как настроить VPN на роутере для обхода блокировок YouTube?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Зависит от модели. На Keenetic: поставьте компонент WireGuard VPN или AmneziaWG через Управление - Компоненты, потом импортируйте конфигурацию с VPS. На OpenWrt: поставьте Podkop или Passwall2 через SSH, настройте VLESS Reality - трафик к заблокированным сайтам пойдёт через туннель, остальной напрямую. На Asus: включите VPN Client в настройках, загрузите .ovpn-файл. После настройки все устройства в сети - Smart TV, PS5, iPhone, ноутбуки - получат доступ к YouTube без дополнительных программ."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой роутер лучше выбрать для VPN в 2026 году?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Лучший вариант - Keenetic Giga (KN-1012) или Keenetic Hopper (KN-3811): мощный процессор, встроенный WireGuard и AmneziaWG, USB-порт для Entware, встроенная память для Zapret. Для OpenWrt - Xiaomi AX3000T (дешёвый, легко перепрошивается), GL.iNet Flint 2 (OpenWrt из коробки), TP-Link Archer AX55. Для Asus - TUF-AX3000 V2 или RT-AX58U с VPN Fusion."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой VPN-протокол лучше использовать на роутере?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "В 2026 году в России лучший протокол - VLESS с XTLS-Reality: маскируется под обычный HTTPS, не детектируется ТСПУ. AmneziaWG - модифицированный WireGuard, устойчив к блокировке, быстрый. Обычный WireGuard блокируется у большинства провайдеров. OpenVPN - медленный и легко определяется. Для раздельного туннелирования на OpenWrt оптимален VLESS через Podkop или Passwall2."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Можно ли настроить VPN на роутере бесплатно?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да. Нужен VPS (от 99 руб/мес у российских хостеров, от 3 евро у зарубежных) и 15 минут на настройку. Ставите 3X-UI на VPS, создаёте VLESS Reality, импортируете конфиг в роутер. Есть и бесплатные VLESS-ключи в телеграм-каналах. Вариант вообще без VPS - поставить Zapret на роутер Keenetic (обходит DPI без сервера), но для Instagram и Facebook это не поможет."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как сделать раздельное туннелирование на роутере?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Раздельное туннелирование направляет через VPN только трафик к заблокированным сайтам (YouTube, Discord, Instagram), а остальной напрямую. На OpenWrt: Podkop - он автоматически маршрутизирует по доменам. На Keenetic: в настройках WireGuard/AmneziaWG укажите маршруты только к нужным подсетям. На Asus: VPN Fusion позволяет выбрать устройства и приложения для VPN."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "VPN на роутере замедляет интернет?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Зависит от протокола и железа. WireGuard и AmneziaWG шифруют быстро - падение 5-15% на нормальных роутерах (Keenetic Giga, Asus AX3000). VLESS Reality примерно так же. OpenVPN значительно медленнее - до 50% на слабых моделях. С раздельным туннелированием замедление только на заблокированных сайтах, остальное летает на полной скорости."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как смотреть YouTube на телевизоре через VPN на роутере?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "После настройки VPN на роутере весь трафик телевизора автоматически идёт через туннель. Открываете стандартное приложение YouTube на Smart TV - видео грузится на полной скорости. Для Android TV рекомендуем также SmartTube - альтернативный клиент без рекламы. Если на роутере раздельное туннелирование - проверьте, что домены YouTube добавлены в список."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как настроить AmneziaWG на роутере Keenetic?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "1) Обновите KeeneticOS до 4.2 или выше. 2) Поставьте компонент WireGuard VPN в разделе Управление - Компоненты. 3) На VPS установите AmneziaVPN и создайте конфигурацию AmneziaWG. 4) В веб-интерфейсе Keenetic: Интернет - Другие подключения - WireGuard, создайте подключение и вставьте конфиг. 5) Для AmneziaWG 2.0 нужен пакет amneziawg-go через OPKG Entware (USB-флешка или встроенная память)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Работает ли VPN на роутере для PlayStation и Xbox?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Да, и это вообще единственный способ использовать VPN на консолях - PS5, PS4, Xbox не поддерживают VPN-приложения. После настройки VPN на роутере консоль подключается к Wi-Fi как обычно, но весь трафик идёт через туннель. Roblox, зарубежные магазины и заблокированные сервисы работают автоматически."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Что лучше - VPN на роутере или VPN на каждом устройстве?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "VPN на роутере: настроил один раз - работает для всех (ТВ, консоли, колонки, гости). Минусы: нужен совместимый роутер, настройка сложнее. VPN на устройстве: гибче (включил/выключил), но не работает на ТВ и консолях, надо ставить на каждый телефон. Лучше всего: VPN на роутере для дома + приложение на телефоне для мобильного интернета."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Как установить Zapret на роутер Keenetic без VPN-сервера?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Zapret обходит DPI прямо на роутере, VPS не нужен. Установка: 1) Подключите USB-флешку к Keenetic. 2) Поставьте OPKG Entware. 3) Зайдите по SSH: ssh admin@192.168.1.1. 4) Установите Zapret: opkg install curl ca-certificates, скачайте скрипт с GitHub bol-van/zapret, запустите install_easy.sh. 5) YouTube и Discord заработают на всех устройствах в сети. Минус: не поможет с Instagram и Facebook (они заблокированы по IP)."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Какой VPS выбрать для VPN на роутере?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Нужен сервер за пределами России. Лучшие локации - Нидерланды, Германия, Финляндия (пинг 30-70 мс из Москвы). Провайдеры: AdminVPS (от 99 руб/мес, оплата рублями), Aeza (от 119 руб/мес, быстрая активация), VDSina (почасовая оплата, чистые IP). Минимум: 1 ядро, 512 МБ RAM, Ubuntu 22.04. Подробный рейтинг на vps-dlya-vpn.vercel.app."
+          }
+        }
+      ]
+    }
+    </script>
 
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "VPN для роутера 2026 - настройка обхода блокировок YouTube и Discord на всех устройствах",
+      "description": "Подробное руководство по настройке VPN на домашнем роутере: Keenetic, OpenWrt, Asus, TP-Link. Протоколы VLESS Reality, AmneziaWG, WireGuard. Раздельное туннелирование, выбор модели, пошаговые инструкции.",
+      "datePublished": "2026-02-24",
+      "dateModified": "2026-02-24",
+      "author": {"@type": "Organization", "name": "VPN для роутера"},
+      "publisher": {"@type": "Organization", "name": "VPN для роутера"}
+    }
+    </script>
+
+    <style>
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --bg: #0a0a0f;
+            --surface: #12121a;
+            --surface-2: #1a1a25;
+            --border: #2a2a3a;
+            --text: #e0e0e8;
+            --text-dim: #8888a0;
+            --accent: #0984e3;
+            --accent-light: #74b9ff;
+            --green: #00b894;
+            --green-dark: #00986d;
+            --orange: #fdcb6e;
+            --red: #ff6b6b;
+            --blue: #74b9ff;
+            --gold: #f9ca24;
+            --silver: #dfe6e9;
+            --bronze: #e17055;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--bg); color: var(--text); line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
+        }
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+            background: rgba(10,10,15,.92); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border); padding: 0 2rem;
+        }
+        .nav-inner {
+            max-width: 1200px; margin: 0 auto;
+            display: flex; align-items: center; justify-content: space-between; height: 60px;
+        }
+        .nav-logo {
+            font-size: 1.1rem; font-weight: 700;
+            background: linear-gradient(135deg, var(--accent-light), var(--green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-decoration: none;
+        }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; flex-wrap: wrap; }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: .85rem; transition: color .2s; }
+        .nav-links a:hover { color: var(--accent-light); }
+        section { padding: 4rem 1.5rem; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .wide { max-width: 1100px; }
+        .hero {
+            padding: 8rem 1.5rem 4rem; text-align: center;
+            background: radial-gradient(ellipse at top, rgba(9,132,227,.12) 0%, transparent 60%);
+        }
+        .hero-badge {
+            display: inline-block; padding: .35rem 1rem; border-radius: 99px;
+            background: rgba(9,132,227,.15); color: var(--accent-light);
+            font-size: .8rem; font-weight: 600; margin-bottom: 1.5rem;
+            border: 1px solid rgba(9,132,227,.25);
+        }
+        .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; }
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--accent-light), var(--green));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+        .hero p { font-size: 1.1rem; color: var(--text-dim); max-width: 700px; margin: 0 auto 2rem; }
+        .hero-cta {
+            display: inline-flex; align-items: center; gap: .5rem;
+            padding: .8rem 2rem; border-radius: 12px;
+            background: linear-gradient(135deg, var(--accent), #0770c2);
+            color: #fff; font-weight: 600; text-decoration: none; transition: transform .2s, box-shadow .2s;
+        }
+        .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(9,132,227,.35); }
+        .stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr));
+            gap: 1rem; margin: 2.5rem auto 0; max-width: 800px;
+        }
+        .stat-card {
+            text-align: center; padding: 1.5rem 1rem;
+            background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+        }
+        .stat-card .num { font-size: 1.8rem; font-weight: 800; color: var(--accent-light); }
+        .stat-card .label { font-size: .8rem; color: var(--text-dim); margin-top: .3rem; }
+        .ticker-wrap {
+            overflow: hidden; padding: 1rem 0; background: var(--surface);
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        }
+        .ticker { display: flex; gap: 2rem; width: max-content; animation: scroll 35s linear infinite; }
+        .ticker span { white-space: nowrap; font-size: .85rem; font-weight: 600; color: var(--text-dim); opacity: .6; }
+        @keyframes scroll { to { transform: translateX(-50%); } }
+        .section-badge {
+            display: inline-block; padding: .3rem .8rem; border-radius: 99px;
+            background: rgba(9,132,227,.12); color: var(--accent-light);
+            font-size: .75rem; font-weight: 600; margin-bottom: .8rem;
+            border: 1px solid rgba(9,132,227,.2);
+        }
+        h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 800; margin-bottom: .6rem; }
+        h3 { font-size: 1.15rem; font-weight: 700; margin-bottom: .4rem; }
+        .section-sub { color: var(--text-dim); font-size: .95rem; margin-bottom: 2rem; }
+        .table-wrap { overflow-x: auto; margin: 2rem 0; border-radius: 16px; border: 1px solid var(--border); }
+        table { width: 100%; border-collapse: collapse; font-size: .82rem; }
+        thead { background: var(--surface-2); }
+        th { padding: .8rem .6rem; text-align: left; font-weight: 700; color: var(--text-dim); white-space: nowrap; }
+        td { padding: .75rem .6rem; border-top: 1px solid var(--border); white-space: nowrap; }
+        tbody tr:hover { background: rgba(9,132,227,.04); }
+        .guide-block {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 16px; padding: 1.8rem; margin-bottom: 1.2rem;
+        }
+        .guide-block h3 { display: flex; align-items: center; gap: .5rem; }
+        .step-num {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 28px; height: 28px; border-radius: 8px;
+            background: linear-gradient(135deg, var(--accent), #0770c2);
+            color: #fff; font-size: .8rem; font-weight: 700; flex-shrink: 0;
+        }
+        .guide-block p, .guide-block ul { color: var(--text-dim); margin-top: .5rem; }
+        .guide-block ul { list-style: none; padding: 0; }
+        .guide-block ul li { padding: .3rem 0; padding-left: 1.2rem; position: relative; }
+        .guide-block ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent-light); }
+        .code-block {
+            background: #0d0d14; border: 1px solid var(--border);
+            border-radius: 12px; padding: 1rem 1.2rem; margin: .8rem 0;
+            font-family: 'SF Mono', Consolas, monospace; font-size: .82rem;
+            color: var(--green); overflow-x: auto; line-height: 1.6;
+        }
+        .pros-cons { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin: 2rem 0; }
+        .pros, .cons {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem;
+        }
+        .pros { border-color: rgba(0,184,148,.3); }
+        .cons { border-color: rgba(255,107,107,.3); }
+        .pros h4, .cons h4 { margin-bottom: .8rem; }
+        .pros li, .cons li { padding: .3rem 0; padding-left: 1.2rem; position: relative; list-style: none; color: var(--text-dim); font-size: .9rem; }
+        .pros li::before { content: '✓'; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+        .cons li::before { content: '✗'; position: absolute; left: 0; color: var(--red); font-weight: 700; }
+        .faq-item {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 14px; margin-bottom: .8rem; overflow: hidden;
+        }
+        .faq-q {
+            padding: 1.2rem 1.5rem; cursor: pointer; font-weight: 600;
+            display: flex; justify-content: space-between; align-items: center; transition: background .2s;
+        }
+        .faq-q:hover { background: var(--surface-2); }
+        .faq-q::after { content: '+'; font-size: 1.2rem; color: var(--accent-light); transition: transform .3s; }
+        .faq-item.open .faq-q::after { transform: rotate(45deg); }
+        .faq-a { padding: 0 1.5rem; max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .4s ease; color: var(--text-dim); }
+        .faq-item.open .faq-a { max-height: 600px; padding: 0 1.5rem 1.2rem; }
+        .tip-box {
+            background: rgba(0,184,148,.06); border: 1px solid rgba(0,184,148,.2);
+            border-radius: 14px; padding: 1.2rem 1.5rem; margin: 1.5rem 0;
+        }
+        .tip-box.warn { background: rgba(253,203,110,.06); border-color: rgba(253,203,110,.2); }
+        .tip-box.danger { background: rgba(255,107,107,.06); border-color: rgba(255,107,107,.2); }
+        .tip-box strong { display: block; margin-bottom: .3rem; }
+        footer {
+            text-align: center; padding: 3rem 1.5rem;
+            border-top: 1px solid var(--border); color: var(--text-dim); font-size: .8rem;
+        }
+        footer a { color: var(--accent-light); text-decoration: none; }
+        .anchor-link { color: var(--accent-light); text-decoration: none; border-bottom: 1px dashed rgba(116,185,255,.3); }
+        .anchor-link:hover { border-bottom-style: solid; }
+        .platform-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr));
+            gap: 1rem; margin-top: 1.5rem;
+        }
+        .platform-card {
+            background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.4rem;
+        }
+        .platform-card h4 { font-size: 1rem; margin-bottom: .6rem; display: flex; align-items: center; gap: .4rem; }
+        .platform-card p { font-size: .88rem; color: var(--text-dim); }
+        .tag-row { display: flex; flex-wrap: wrap; gap: .4rem; margin-top: 1rem; }
+        .tag {
+            padding: .25rem .65rem; border-radius: 8px; font-size: .72rem; font-weight: 600;
+            background: var(--surface-2); color: var(--text-dim); border: 1px solid var(--border);
+        }
+        .tag.green { background: rgba(0,184,148,.1); color: var(--green); border-color: rgba(0,184,148,.25); }
+        .tag.blue { background: rgba(116,185,255,.1); color: var(--blue); border-color: rgba(116,185,255,.25); }
+        .tag.orange { background: rgba(253,203,110,.1); color: var(--orange); border-color: rgba(253,203,110,.25); }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .pros-cons { grid-template-columns: 1fr; }
+            section { padding: 2.5rem 1rem; }
+        }
+    </style>
+				 <script defer src="/_vercel/insights/script.js"></script>
+  <script defer src="/_vercel/speed-insights/script.js"></script>
+</head>
+<body>
+
+<nav>
+    <div class="nav-inner">
+        <a href="/" class="nav-logo"><img src="/logo_rout.webp" alt="VPN для роутера" height="66"></a>
+        <ul class="nav-links">
+            <li><a href="#why">Зачем</a></li>
+            <li><a href="#routers">Роутеры</a></li>
+            <li><a href="#protocols">Протоколы</a></li>
+            <li><a href="#keenetic">Keenetic</a></li>
+            <li><a href="#openwrt">OpenWrt</a></li>
+            <li><a href="#asus">Asus</a></li>
+            <li><a href="#split">Туннелирование</a></li>
+            <li><a href="#vps">VPS</a></li>
+            <li><a href="#zapret">Zapret</a></li>
+            <li><a href="#faq">FAQ</a></li>
+        </ul>
+    </div>
+</nav>
+
+<section class="hero">
+    <span class="hero-badge">Обновлено: 24 февраля 2026</span>
+    <h1>Лучшие VPN сервисы для роутера в 2026 -<br><span>обход блокировок YouTube на всех устройствах</span></h1>
+    <p>Настройте VPN один раз на домашнем роутере, и Smart TV, PlayStation, айфоны, ноутбуки, да вообще все устройства в доме получат доступ к YouTube, Discord, Instagram и чему угодно ещё. Тут собраны подробные инструкции для Keenetic, OpenWrt, Asus и TP-Link.</p>
+    <a href="#routers" class="hero-cta">Выбрать роутер и способ ↓</a>
+
+    <div class="stats">
+        <div class="stat-card">
+            <div class="num">6</div>
+            <div class="label">Способов настройки</div>
+        </div>
+        <div class="stat-card">
+            <div class="num">15+</div>
+            <div class="label">Моделей роутеров</div>
+        </div>
+        <div class="stat-card">
+            <div class="num">99 ₽</div>
+            <div class="label">Минимальная цена VPS/мес</div>
+        </div>
+        <div class="stat-card">
+            <div class="num">∞</div>
+            <div class="label">Устройств в домашней сети</div>
+        </div>
+    </div>
+</section>
+
+<div class="ticker-wrap">
+    <div class="ticker">
+        <span>VLESS Reality</span><span>AmneziaWG</span><span>WireGuard</span><span>Keenetic</span><span>OpenWrt</span>
+        <span>Podkop</span><span>Passwall2</span><span>Smart TV</span><span>PlayStation 5</span><span>Xbox</span>
+        <span>YouTube</span><span>Discord</span><span>Instagram</span><span>Раздельное туннелирование</span>
+        <span>3X-UI</span><span>Xray-core</span><span>Split Tunneling</span><span>Zapret</span>
+        <span>VLESS Reality</span><span>AmneziaWG</span><span>WireGuard</span><span>Keenetic</span><span>OpenWrt</span>
+        <span>Podkop</span><span>Passwall2</span><span>Smart TV</span><span>PlayStation 5</span><span>Xbox</span>
+        <span>YouTube</span><span>Discord</span><span>Instagram</span><span>Раздельное туннелирование</span>
+        <span>3X-UI</span><span>Xray-core</span><span>Split Tunneling</span><span>Zapret</span>
+    </div>
+</div>
+
+<!-- ЗАЧЕМ -->
+<section id="why">
+    <div class="container">
+        <span class="section-badge">Зачем это нужно</span>
+        <h2>Почему VPN на роутере - лучшее решение для дома в 2026</h2>
+        <p class="section-sub">Настроил один раз маршрутизатор - и все гаджеты в квартире обходят блокировки без лишних телодвижений</p>
+
+        <p>С августа 2024 Роскомнадзор через оборудование ТСПУ замедляет YouTube, полностью заблокировал Discord, Roblox, Instagram и Facebook. На компьютере или андроид-смартфоне можно поставить Zapret или ByeDPI и забыть. Но есть куча устройств, на которые вообще ничего не поставишь: телевизоры Samsung и LG, Apple TV, PlayStation 5, Xbox, умные колонки, детские планшеты.</p>
+
+        <p>Решение простое: <strong>настроить VPN или обход DPI прямо на Wi-Fi роутере</strong>. После этого любой девайс, который подключился к домашней сети, автоматически получает свободный интернет. Никаких программ, никаких настроек на каждом телефоне. Включил Wi-Fi - смотришь YouTube в 4K на телевизоре, звонишь в Discord на ноутбуке, играешь в Roblox на планшете.</p>
+
+        <p>Есть два подхода. Первый - <strong>VPN-туннель</strong>: трафик шифруется и идёт через зарубежный сервер (понадобится <a href="https://vps-v-evrope.vercel.app/" class="anchor-link" target="_blank">VPS в Европе</a> — от 210 ₽/мес с оплатой рублями). Работает вообще с любыми заблокированными сайтами, включая Instagram. Второй - <strong>обход DPI (Zapret/nfqws)</strong>: пакеты модифицируются прямо на роутере, без внешнего сервера. Быстрее, но не поможет с сайтами, заблокированными по IP (Meta). Можно и оба сразу.</p>
+        
+        <div class="pros-cons">
+            <div class="pros">
+                <h4>Плюсы VPN на роутере</h4>
+                <ul>
+                    <li>Работает для всех: телевизор, консоль, телефоны, планшеты</li>
+                    <li>Настраиваешь один раз - работает постоянно</li>
+                    <li>Не надо ставить приложения на каждый девайс</li>
+                    <li>Гости автоматом получают доступ через Wi-Fi</li>
+                    <li>Раздельное туннелирование экономит скорость</li>
+                    <li>YouTube, Discord, Instagram, Roblox - всё работает</li>
+                </ul>
+            </div>
+            <div class="cons">
+                <h4>Минусы</h4>
+                <ul>
+                    <li>Нужен совместимый роутер</li>
+                    <li>Настройка посложнее, чем программа на ПК</li>
+                    <li>VPN требует VPS-сервер (от 99 руб/мес)</li>
+                    <li>Слабые роутеры могут просадить скорость</li>
+                    <li>Не работает на мобильном интернете вне дома</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <strong>Оптимальная схема:</strong> VPN на роутере с раздельным туннелированием для дома (ТВ, консоли, все Wi-Fi устройства) + VPN-приложение на телефоне (V2Box, ByeDPI) для мобильного 4G/5G на улице. Так вы прикрыты везде.
+        </div>
+    </div>
+</section>
+
+<!-- РОУТЕРЫ -->
+<section id="routers">
+    <div class="container wide">
+        <span class="section-badge">Выбор роутера</span>
+        <h2>Какой роутер подходит для VPN - рейтинг моделей 2026</h2>
+        <p class="section-sub">Не каждый маршрутизатор умеет работать VPN-клиентом. Нужна модель с нормальным процессором и подходящей прошивкой.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Модель</th>
+                        <th>Прошивка</th>
+                        <th>Wi-Fi</th>
+                        <th>CPU</th>
+                        <th>RAM</th>
+                        <th>USB</th>
+                        <th>WireGuard</th>
+                        <th>AmneziaWG</th>
+                        <th>VLESS</th>
+                        <th>Zapret</th>
+                        <th>Цена</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Keenetic Giga (KN-1012)</strong></td>
+                        <td>KeeneticOS</td>
+                        <td>Wi-Fi 6 AX1800</td>
+                        <td>MT7621A 880 МГц</td>
+                        <td>256 МБ</td>
+                        <td>USB 3.0</td>
+                        <td>✅</td>
+                        <td>✅ OPKG</td>
+                        <td>✅ Entware</td>
+                        <td>✅</td>
+                        <td>~5 500 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keenetic Hopper (KN-3811)</strong></td>
+                        <td>KeeneticOS</td>
+                        <td>Wi-Fi 6 AX1800</td>
+                        <td>MT7981B 1.3 ГГц</td>
+                        <td>512 МБ</td>
+                        <td>USB 3.0</td>
+                        <td>✅</td>
+                        <td>✅ OPKG</td>
+                        <td>✅ Entware</td>
+                        <td>✅</td>
+                        <td>~5 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keenetic Viva (KN-1912)</strong></td>
+                        <td>KeeneticOS</td>
+                        <td>Wi-Fi 5 AC1300</td>
+                        <td>MT7621A 880 МГц</td>
+                        <td>256 МБ</td>
+                        <td>USB 2.0</td>
+                        <td>✅</td>
+                        <td>✅ OPKG</td>
+                        <td>✅ Entware</td>
+                        <td>✅</td>
+                        <td>~4 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xiaomi AX3000T</strong></td>
+                        <td>OpenWrt</td>
+                        <td>Wi-Fi 6 AX3000</td>
+                        <td>MT7981B 1.3 ГГц</td>
+                        <td>256 МБ</td>
+                        <td>нет</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅ Podkop</td>
+                        <td>✅</td>
+                        <td>~2 500 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GL.iNet Flint 2 (GL-MT6000)</strong></td>
+                        <td>OpenWrt</td>
+                        <td>Wi-Fi 6 AX6000</td>
+                        <td>MT7986A 2 ГГц</td>
+                        <td>1 ГБ</td>
+                        <td>USB 3.0</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅ Podkop</td>
+                        <td>✅</td>
+                        <td>~8 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TP-Link Archer AX55</strong></td>
+                        <td>OpenWrt / Stock</td>
+                        <td>Wi-Fi 6 AX3000</td>
+                        <td>BCM6756 1.7 ГГц</td>
+                        <td>512 МБ</td>
+                        <td>USB 3.0</td>
+                        <td>✅ OWrt</td>
+                        <td>✅ OWrt</td>
+                        <td>✅ OWrt</td>
+                        <td>✅ OWrt</td>
+                        <td>~4 500 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Asus TUF-AX3000 V2</strong></td>
+                        <td>AsusWRT</td>
+                        <td>Wi-Fi 6 AX3000</td>
+                        <td>BCM6756 1.7 ГГц</td>
+                        <td>512 МБ</td>
+                        <td>USB 3.2</td>
+                        <td>✅</td>
+                        <td>нет</td>
+                        <td>нет</td>
+                        <td>нет</td>
+                        <td>~7 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Asus RT-AX58U</strong></td>
+                        <td>Merlin</td>
+                        <td>Wi-Fi 6 AX3000</td>
+                        <td>BCM6750 1.5 ГГц</td>
+                        <td>512 МБ</td>
+                        <td>USB 3.0</td>
+                        <td>✅</td>
+                        <td>нет</td>
+                        <td>нет</td>
+                        <td>нет</td>
+                        <td>~6 000 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xiaomi Mi 4A Gigabit</strong></td>
+                        <td>OpenWrt</td>
+                        <td>Wi-Fi 5 AC1200</td>
+                        <td>MT7621A 880 МГц</td>
+                        <td>128 МБ</td>
+                        <td>нет</td>
+                        <td>✅</td>
+                        <td>⚠️</td>
+                        <td>⚠️</td>
+                        <td>✅</td>
+                        <td>~1 500 ₽</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Cudy WR3000</strong></td>
+                        <td>OpenWrt</td>
+                        <td>Wi-Fi 6 AX3000</td>
+                        <td>MT7981B 1.3 ГГц</td>
+                        <td>256 МБ</td>
+                        <td>нет</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>✅ Podkop</td>
+                        <td>✅</td>
+                        <td>~3 200 ₽</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size:.8rem;color:var(--text-dim);">✅ поддерживается штатно или через пакеты. ⚠️ ограниченно (мало оперативки). Цены примерные на февраль 2026.</p>
+
+        <div class="tip-box">
+            <strong>Что брать:</strong> Для большинства людей - <strong>Keenetic Giga</strong> или <strong>Keenetic Hopper</strong>. Русский интерфейс, встроенный WireGuard, через OPKG ставится AmneziaWG и VLESS, всё понятно даже новичку. Для тех, кто не боится консоли - <strong>Xiaomi AX3000T с OpenWrt</strong>. Стоит копейки, процессор мощный, свобода полная: Podkop, Passwall2, что хочешь.
+        </div>
+    </div>
+</section>
+
+<!-- ПРОТОКОЛЫ -->
+<section id="protocols">
+    <div class="container wide">
+        <span class="section-badge">Протоколы</span>
+        <h2>Какой VPN-протокол работает на роутере в 2026</h2>
+        <p class="section-sub">Не все протоколы живы. Роскомнадзор через ТСПУ убил WireGuard и OpenVPN у большинства провайдеров. Смотрим, что реально работает.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Протокол</th>
+                        <th>Скорость</th>
+                        <th>Устойчивость к DPI</th>
+                        <th>Где работает на роутере</th>
+                        <th>Настройка</th>
+                        <th>Статус в РФ (февраль 2026)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>VLESS + XTLS-Reality</strong></td>
+                        <td>высокая</td>
+                        <td>максимальная</td>
+                        <td>OpenWrt (Podkop, Passwall2), Keenetic (Entware)</td>
+                        <td>средняя</td>
+                        <td>✅ работает стабильно</td>
+                    </tr>
+                    <tr>
+                        <td><strong>AmneziaWG</strong></td>
+                        <td>очень высокая</td>
+                        <td>высокая</td>
+                        <td>Keenetic (OPKG), OpenWrt</td>
+                        <td>средняя</td>
+                        <td>✅ работает стабильно</td>
+                    </tr>
+                    <tr>
+                        <td><strong>WireGuard</strong></td>
+                        <td>очень высокая</td>
+                        <td>никакая</td>
+                        <td>Keenetic, OpenWrt, Asus, TP-Link</td>
+                        <td>простая</td>
+                        <td>❌ блокируется почти везде</td>
+                    </tr>
+                    <tr>
+                        <td><strong>OpenVPN</strong></td>
+                        <td>низкая</td>
+                        <td>никакая</td>
+                        <td>Keenetic, Asus, TP-Link, OpenWrt</td>
+                        <td>средняя</td>
+                        <td>❌ блокируется DPI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>VLESS + XHTTP</strong></td>
+                        <td>высокая</td>
+                        <td>максимальная</td>
+                        <td>OpenWrt (Passwall2), Keenetic (Entware)</td>
+                        <td>сложная</td>
+                        <td>✅ работает, мимикрирует под HTTP</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Trojan</strong></td>
+                        <td>средняя</td>
+                        <td>высокая</td>
+                        <td>OpenWrt (Passwall2)</td>
+                        <td>средняя</td>
+                        <td>✅ работает</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hysteria2</strong></td>
+                        <td>высокая (UDP)</td>
+                        <td>высокая</td>
+                        <td>OpenWrt (Passwall2)</td>
+                        <td>средняя</td>
+                        <td>✅ работает</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="tip-box">
+            <strong>Короче:</strong> На <strong>Keenetic</strong> ставьте <strong>AmneziaWG</strong> - быстро, просто, DPI не видит. На <strong>OpenWrt</strong> ставьте <strong>VLESS Reality через Podkop</strong> - максимальная устойчивость плюс раздельное туннелирование из коробки. Обычный WireGuard и OpenVPN в 2026 году в России мертвы.
+        </div>
+    </div>
+</section>
+
+<!-- KEENETIC -->
+<section id="keenetic">
+    <div class="container">
+        <span class="section-badge">Keenetic</span>
+        <h2>Настройка VPN на Keenetic - пошагово</h2>
+        <p class="section-sub">Keenetic - самый популярный роутер для домашнего VPN в России. Поддерживает WireGuard, AmneziaWG и VLESS через Entware.</p>
+
+        <h3 style="margin-top:2rem;margin-bottom:1rem;">Способ 1: AmneziaWG (рекомендуем)</h3>
+        <p style="color:var(--text-dim);margin-bottom:1.5rem;">AmneziaWG - это модифицированный WireGuard, который ТСПУ не может заблокировать. Скорость до 500 Мбит/с на Keenetic Giga, хватит для 4K YouTube на нескольких телевизорах одновременно.</p>
+
+        <div class="guide-block">
+            <h3><span class="step-num">1</span> Арендуйте VPS</h3>
+            <p>Нужен сервер за пределами России. Нидерланды, Германия или Финляндия - оптимально по пингу. Минимум: 1 ядро, 512 МБ RAM, Ubuntu 22.04. Цена от 99 руб/мес. Рейтинг хостингов: <a href="https://vps-dlya-vpn.vercel.app/" class="anchor-link" target="_blank">vps-dlya-vpn.vercel.app</a>. Если ищете именно европейский сервер с оплатой в рублях — смотрите <a href="https://vps-v-evrope.vercel.app/" class="anchor-link" target="_blank">подборку VPS в Европе</a> (10 провайдеров, от 210 ₽/мес). Бюджет ограничен? Есть <a href="https://deshevyy-vps.vercel.app/" class="anchor-link" target="_blank">рейтинг дешёвых VPS</a> с тарифами от 99 ₽. Поставьте AmneziaVPN на комп, подключитесь к VPS, создайте AmneziaWG-конфиг. Скопируйте его - пригодится для роутера.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">2</span> Обновите прошивку и компоненты</h3>
+            <p>Зайдите в веб-интерфейс роутера: <code>192.168.1.1</code>. Идите в <strong>Управление → Общие настройки → Компоненты</strong>. Проверьте, что стоят: «WireGuard VPN», «Подключение через SSTP», «Компоненты OPKG». Если WireGuard VPN нет - жмите «Изменить набор компонентов» и добавляйте. Обновите KeeneticOS до последней (5.0.4+).</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">3</span> Поставьте AmneziaWG через OPKG</h3>
+            <p>Для AmneziaWG 2.0 нужен пакет <code>amneziawg-go</code> через OPKG Entware. Воткните USB-флешку в роутер (или используйте встроенную память на моделях с 256+ МБ). Подключитесь по SSH:</p>
+            <div class="code-block">ssh admin@192.168.1.1</div>
+            <p>Поставьте Entware, затем AmneziaWG по инструкции из <a href="https://docs.amnezia.org/ru/documentation/instructions/keenetic-os-awg/" class="anchor-link" rel="nofollow" target="_blank">официальной документации Amnezia</a>.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">4</span> Импортируйте конфиг</h3>
+            <p>В веб-интерфейсе Keenetic идите в <strong>Интернет → Другие подключения → WireGuard</strong>. Создайте новое подключение. Вставьте данные из конфига AmneziaWG: приватный ключ, публичный ключ сервера, Endpoint (IP:порт VPS), AllowedIPs. Хотите раздельное туннелирование? В AllowedIPs пропишите только подсети заблокированных сервисов, а не <code>0.0.0.0/0</code>.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">5</span> Проверьте</h3>
+            <p>Включите соединение. Откройте YouTube на телевизоре или любом устройстве - видео должно грузиться мгновенно. Зайдите на <a href="https://whoer.net/" class="anchor-link" rel="nofollow" target="_blank">whoer.net</a> - если показывает IP вашего VPS, туннель работает.</p>
+        </div>
+
+        <h3 style="margin-top:3rem;margin-bottom:1rem;">Способ 2: VLESS Reality через Entware + Xray</h3>
+        <p style="color:var(--text-dim);margin-bottom:1.5rem;">Для максимальной устойчивости. VLESS маскируется под обычный HTTPS, ТСПУ вообще не может отличить ваш VPN от обычного серфинга. Нужен USB-накопитель и установка Xray через Entware.</p>
+
+        <div class="guide-block">
+            <h3><span class="step-num">1</span> Поставьте OPKG Entware</h3>
+            <p>Воткните USB-флешку (ext4) в Keenetic. В веб-интерфейсе: <strong>Управление → Компоненты</strong>, поставьте «OPKG». Роутер закинет менеджер пакетов на флешку. Подробности: <a href="https://help.keenetic.com/hc/ru/articles/360000948719-OPKG" class="anchor-link" rel="nofollow" target="_blank">help.keenetic.com</a>.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">2</span> Поставьте Xray-core</h3>
+            <p>Подключитесь по SSH. Ставьте зависимости и скачивайте Xray-core нужной архитектуры (mipsel для старых Keenetic, aarch64 для новых):</p>
+            <div class="code-block">opkg update
+opkg install curl ca-certificates
+# Скачайте xray-core: github.com/XTLS/Xray-core/releases</div>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">3</span> Настройте VLESS Reality</h3>
+            <p>На VPS поставьте 3X-UI (<a href="https://vps-dlya-vpn.vercel.app/" class="anchor-link" target="_blank">инструкция тут</a>), создайте VLESS Reality inbound. Скопируйте конфиг и создайте <code>/opt/etc/xray/config.json</code> на роутере. Настройте маршрутизацию: только заблокированные домены через туннель.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">4</span> Автозапуск</h3>
+            <p>Создайте init-скрипт в <code>/opt/etc/init.d/</code>, чтобы Xray стартовал при загрузке роутера. Настройте iptables для перенаправления трафика. Подробнее: <a href="https://github.com/AlexFBG/zapret" class="anchor-link" rel="nofollow" target="_blank">GitHub AlexFBG</a>.</p>
+        </div>
+
+        <div class="tip-box warn">
+            <strong>Что выбрать для Keenetic:</strong> AmneziaWG проще и быстрее, хватает для YouTube и Discord. VLESS Reality сложнее, но вообще не убиваемый - если завтра ТСПУ научатся фильтровать AmneziaWG, VLESS всё равно будет работать. Не уверены - начните с AmneziaWG.
+        </div>
+    </div>
+</section>
+
+<!-- OPENWRT -->
+<section id="openwrt">
+    <div class="container">
+        <span class="section-badge">OpenWrt</span>
+        <h2>VPN на роутере с OpenWrt - Podkop и Passwall2</h2>
+        <p class="section-sub">OpenWrt - свободная прошивка с полным контролем. Лучший вариант для VLESS, раздельного туннелирования и нестандартных задач.</p>
+
+        <p>Роутеры на OpenWrt (Xiaomi AX3000T, GL.iNet Flint 2, TP-Link Archer AX55, Cudy WR3000) дают максимум гибкости. Два главных инструмента для обхода блокировок:</p>
+
+        <h3 style="margin-top:2rem;margin-bottom:1rem;">Podkop - раздельная маршрутизация по доменам</h3>
+        <p style="color:var(--text-dim);margin-bottom:1rem;"><strong>Podkop</strong> (<a href="https://podkop.net/" class="anchor-link" rel="nofollow" target="_blank">podkop.net</a>) - open-source штука для OpenWrt, которая автоматом гонит трафик к заблокированным доменам через VPN, а остальной напрямую. Поддерживает VLESS, Trojan, Hysteria2, Shadowsocks. Встроенные списки заблокированных ресурсов.</p>
+
+        <div class="guide-block">
+            <h3><span class="step-num">1</span> Прошейте роутер на OpenWrt</h3>
+            <p>Для Xiaomi AX3000T: качаете прошивку с <a href="https://openwrt.org/toh/start" class="anchor-link" rel="nofollow" target="_blank">openwrt.org</a>, шьёте через веб-интерфейс стоковой прошивки или SSH. GL.iNet Flint 2 идёт с OpenWrt из коробки. TP-Link Archer AX55 - через TFTP Recovery.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">2</span> Поставьте Podkop</h3>
+            <p>Подключитесь по SSH и выполните:</p>
+            <div class="code-block">opkg update
+opkg install podkop luci-app-podkop</div>
+            <p>Мало памяти? Соберите кастомную прошивку через OpenWrt Firmware Selector с включённым Podkop.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">3</span> Настройте VPS и получите VLESS-ключ</h3>
+            <p>На VPS ставите 3X-UI, создаёте VLESS Reality inbound. Копируете ссылку <code>vless://...</code>. В LuCI идёте в <strong>Services → Podkop</strong>. Вставляете VLESS-ссылку. Выбираете списки доменов для туннелирования: YouTube, Discord, Meta, Roblox.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">4</span> Включайте и проверяйте</h3>
+            <p>Жмёте «Enable» и «Save & Apply». Podkop сам настроит маршруты: заблокированные домены через VLESS, российские сервисы (Яндекс, ВК, Госуслуги) напрямую. Открываете YouTube на любом устройстве в сети - видео грузится моментально.</p>
+        </div>
+
+        <h3 style="margin-top:3rem;margin-bottom:1rem;">Passwall2 - продвинутая альтернатива</h3>
+        <p style="color:var(--text-dim);margin-bottom:1rem;"><strong>Passwall2</strong> - мощный плагин для OpenWrt. Поддерживает VLESS, VLESS+XHTTP, Trojan, Hysteria2, Shadowsocks-2022. Есть графический интерфейс в LuCI, автообновление подписок, правила маршрутизации по доменам и GeoIP.</p>
+
+        <div class="guide-block">
+            <h3><span class="step-num">1</span> Установка</h3>
+            <div class="code-block">opkg update
+opkg install luci-app-passwall2 xray-core</div>
+            <p>Или соберите прошивку с Passwall2. После установки перезагрузите роутер.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">2</span> Добавьте сервер</h3>
+            <p>В LuCI: <strong>Services → PassWall 2 → Node List → Add</strong>. Тип - Xray/VLESS. Вбиваете данные VPS: адрес, порт, UUID, flow (xtls-rprx-vision), security (reality), SNI. Сохраняете.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">3</span> Настройте маршрутизацию</h3>
+            <p>Во вкладке <strong>Basic Settings</strong>: TCP Default - ваш VLESS-сервер, UDP Default - Direct (или тоже через сервер). Во вкладке <strong>Rule</strong> добавьте домены (youtube.com, discord.com, instagram.com). Остальной трафик пойдёт напрямую.</p>
+        </div>
+
+        <div class="tip-box">
+            <strong>Podkop или Passwall2?</strong> Podkop проще, заточен под раздельное туннелирование, идеален если вы в этом деле новичок. Passwall2 мощнее, больше протоколов и настроек, для тех кто знает зачем ему это нужно. Оба бесплатные, оба open-source.
+        </div>
+    </div>
+</section>
+
+<!-- ASUS / TP-LINK -->
+<section id="asus">
+    <div class="container">
+        <span class="section-badge">Asus / TP-Link</span>
+        <h2>VPN на роутерах Asus и TP-Link</h2>
+        <p class="section-sub">Стоковая прошивка Asus умеет WireGuard и OpenVPN, но в 2026 оба протокола блокируются. Выход есть.</p>
+
+        <h3 style="margin-top:1.5rem;">Asus (AsusWRT / Merlin)</h3>
+        <p style="color:var(--text-dim);margin-bottom:1rem;">Asus из коробки поддерживает VPN-клиент: OpenVPN и WireGuard. На прошивке Merlin тоже есть WireGuard. Проблема: оба протокола режутся ТСПУ. Что делать:</p>
+
+        <div class="guide-block">
+            <h3>Вариант А: VPN Fusion</h3>
+            <p>На моделях с <strong>VPN Fusion</strong> (TUF-AX3000, RT-AX86U, RT-AX88U) можно выбрать, какие устройства ходят через VPN, а какие напрямую. Настройка: <strong>VPN → VPN Fusion → Add Profile</strong>. Загрузите .ovpn от коммерческого VPN с обфускацией (NordVPN Obfuscated, Surfshark NoBorders). Укажите устройства по MAC-адресу.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>Вариант Б: Перешить на OpenWrt</h3>
+            <p>Многие модели Asus (RT-AX58U, TUF-AX3000 V2) поддерживают OpenWrt. После перепрошивки получаете Podkop, Passwall2, VLESS Reality - всё то, что ТСПУ не блокирует. Проверяйте совместимость на <a href="https://openwrt.org/toh/start" class="anchor-link" rel="nofollow" target="_blank">openwrt.org</a>.</p>
+        </div>
+
+        <h3 style="margin-top:2rem;">TP-Link</h3>
+        <p style="color:var(--text-dim);margin-bottom:1rem;">Стоковая прошивка TP-Link почти не умеет в VPN-клиент (только OpenVPN на некоторых моделях, да и тот блокируется). Путь один - <strong>перешить на OpenWrt</strong>. Поддерживаются: Archer AX55, Archer AX53, Archer C6 v2/v3, Archer AX23. После установки ставите Podkop или Passwall2 по инструкции выше.</p>
+
+        <div class="tip-box warn">
+            <strong>Xiaomi / Huawei / D-Link:</strong> Стоковые прошивки VPN-клиент не поддерживают. Единственный путь - OpenWrt (если модель совместима). Перед покупкой роутера обязательно проверяйте на <a href="https://openwrt.org/toh/start" class="anchor-link" rel="nofollow" target="_blank">openwrt.org/toh</a>.
+        </div>
+    </div>
+</section>
+
+<!-- РАЗДЕЛЬНОЕ ТУННЕЛИРОВАНИЕ -->
+<section id="split">
+    <div class="container">
+        <span class="section-badge">Split Tunneling</span>
+        <h2>Раздельное туннелирование - только заблокированное через VPN</h2>
+        <p class="section-sub">Зачем гнать весь трафик через VPN, если разблокировать надо только YouTube и Discord?</p>
+
+        <p><strong>Раздельное туннелирование</strong> (split tunneling) - это когда через VPN идёт только трафик к заблокированным ресурсам (YouTube, Discord, Instagram, Roblox), а всё остальное напрямую к провайдеру. Что это даёт: Яндекс, ВК, Госуслуги, онлайн-банки работают на полной скорости без VPN; геолокация для российских сервисов не меняется; нагрузка на VPS минимальная; скорость практически не падает.</p>
+
+        <h3 style="margin-top:2rem;">Как настроить</h3>
+
+        <div class="platform-grid">
+            <div class="platform-card">
+                <h4>OpenWrt + Podkop</h4>
+                <p>Podkop заточен именно под это. В настройках выбираете списки доменов (YouTube, Discord, Meta, Roblox) - только они пойдут через VLESS. Поддерживает автообновление списков из базы <a href="https://community.antifilter.download/" class="anchor-link" rel="nofollow" target="_blank">Antifilter</a>.</p>
+            </div>
+            <div class="platform-card">
+                <h4>OpenWrt + Passwall2</h4>
+                <p>Во вкладке Rule добавляете домены и подсети. Поддерживает GeoIP и Geosite из баз Re:filter и Antifilter. Можно задать разные серверы для разных доменов.</p>
+            </div>
+            <div class="platform-card">
+                <h4>Keenetic</h4>
+                <p>В настройках WireGuard/AmneziaWG в AllowedIPs прописываете только подсети заблокированных сервисов вместо <code>0.0.0.0/0</code>. Можно также использовать политики маршрутизации в «Приоритетах подключений».</p>
+            </div>
+            <div class="platform-card">
+                <h4>Asus (VPN Fusion)</h4>
+                <p>VPN Fusion позволяет выбрать конкретные устройства, которые ходят через VPN. Остальные напрямую. Разделение по устройствам, а не по доменам.</p>
+            </div>
+        </div>
+
+        <div class="tip-box">
+            <strong>Списки заблокированных сайтов:</strong> Берите автообновляемые базы от сообщества: <a href="https://community.antifilter.download/" class="anchor-link" rel="nofollow" target="_blank">Antifilter</a> (IP-адреса), <a href="https://github.com/1andrevich/Re-filter-lists" class="anchor-link" rel="nofollow" target="_blank">Re:filter</a> (домены и GeoIP для Xray/Sing-box). Podkop и Passwall2 умеют подтягивать их автоматически.
+        </div>
+    </div>
+</section>
+
+<!-- ZAPRET -->
+<section id="zapret">
+    <div class="container">
+        <span class="section-badge">Без VPN-сервера</span>
+        <h2>Zapret на роутере - обход DPI бесплатно и без VPS</h2>
+        <p class="section-sub">Бесплатно разблокировать YouTube и Discord на всех устройствах. Внешний сервер не нужен - пакеты модифицируются прямо на маршрутизаторе.</p>
+
+        <p><strong>Zapret (nfqws)</strong> - утилита для обхода DPI, которую можно поставить на Keenetic и OpenWrt. Она модифицирует TCP-пакеты так, что ТСПУ не понимает, что вы идёте на YouTube или Discord. Трафик идёт напрямую, без сервера - скорость максимальная, IP не меняется.</p>
+
+        <p>Плюс Zapret: полностью бесплатно, VPS не нужен, скорость как без VPN. Минус: не поможет с Instagram и Facebook (они заблокированы по IP, а Zapret IP не меняет).</p>
+
+        <h3 style="margin-top:2rem;margin-bottom:1rem;">Zapret на Keenetic</h3>
+
+        <div class="guide-block">
+            <h3><span class="step-num">1</span> Поставьте OPKG Entware</h3>
+            <p>Воткните USB-флешку в Keenetic. Поставьте OPKG в веб-интерфейсе (<strong>Управление → Компоненты</strong>). На моделях с 256+ МБ встроенной памяти (Giga, Hopper) Entware можно закинуть на встроенную память без USB: <a href="https://help.keenetic.com/hc/ru/articles/360021888880" class="anchor-link" rel="nofollow" target="_blank">инструкция</a>.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">2</span> Поставьте Zapret</h3>
+            <p>Зайдите по SSH и выполните:</p>
+            <div class="code-block">opkg update
+opkg install curl ca-certificates iptables
+# Скачайте и запустите install_easy.sh из репозитория bol-van/zapret</div>
+            <p>Подробная инструкция для Keenetic: <a href="https://github.com/AlexFBG/zapret" class="anchor-link" rel="nofollow" target="_blank">GitHub AlexFBG/zapret</a>.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">3</span> Проверьте</h3>
+            <p>YouTube и Discord должны заработать на всех устройствах в сети. Не работает? Отредактируйте параметры nfqws в конфиге, подберите рабочую стратегию для вашего провайдера. На GitHub и 4PDA есть готовые конфиги для МТС, Билайн, МегаФон, Ростелеком.</p>
+        </div>
+
+        <h3 style="margin-top:3rem;margin-bottom:1rem;">Zapret на OpenWrt</h3>
+
+        <div class="guide-block">
+            <h3><span class="step-num">1</span> Поставьте nfqws</h3>
+            <div class="code-block">opkg update
+opkg install nfqws
+# Или скомпилируйте из исходников: github.com/bol-van/zapret</div>
+        </div>
+
+        <div class="guide-block">
+            <h3><span class="step-num">2</span> Настройте правила iptables</h3>
+            <p>Создайте скрипт в <code>/etc/init.d/</code> с правилами для перенаправления трафика к YouTube и Discord через nfqws. Укажите стратегию обхода под вашего провайдера.</p>
+        </div>
+
+        <div class="tip-box">
+            <strong>Zapret + VPN = максимум:</strong> Zapret для YouTube и Discord (бесплатно, без VPS, полная скорость), а VPN-туннель (VLESS/AmneziaWG) для Instagram, Facebook и всего, что заблокировано по IP. Оба метода отлично работают одновременно на одном роутере.
+        </div>
+    </div>
+</section>
+
+<!-- VPS -->
+<section id="vps">
+    <div class="container">
+        <span class="section-badge">VPS</span>
+        <h2>Какой VPS арендовать для VPN на роутере</h2>
+        <p class="section-sub">Для VPN-туннеля нужен виртуальный сервер за рубежом. Выбираем оптимальный.</p>
+
+        <p>Для домашнего VPN хватит минимального VPS: 1 ядро, 512 МБ RAM, 10 ГБ SSD, безлимитный трафик. Главное - <strong>локация</strong> (ближе к России = ниже пинг = быстрее YouTube), <strong>чистота IP</strong> (чтоб не в чёрных списках) и <strong>оплата</strong> (российские карты или крипта).</p>
+
+        <div class="platform-grid">
+            <div class="platform-card">
+                <h4>AdminVPS</h4>
+                <p>От 99 руб/мес. NVMe, безлимитный трафик. Нидерланды, Германия, Финляндия. Оплата российскими картами, СБП. Поддержка VLESS Reality. Самый дешёвый вариант.</p>
+                <p style="margin-top:.5rem;"><a href="https://adminvps.ru/" class="anchor-link" rel="nofollow noreferrer" target="_blank">adminvps.ru</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>Aeza</h4>
+                <p>От 119 руб/мес. Мгновенная активация, NVMe. Нидерланды, Германия, Финляндия, Швеция. Оплата рублями. Хорошие IP, VLESS Reality работает.</p>
+                <p style="margin-top:.5rem;"><a href="#" class="anchor-link" rel="nofollow noreferrer" target="_blank">aeza.net</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>VDSina</h4>
+                <p>Почасовая оплата, NVMe, безлимит. Нидерланды, Россия. Чистые IP, оплата рублями и криптой. Удобная панель.</p>
+                <p style="margin-top:.5rem;"><a href="#" class="anchor-link" rel="nofollow noreferrer" target="_blank">vdsina.com</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>Vultr</h4>
+                <p>От $3.50/мес. 30+ локаций. Легко менять IP (удалил сервер - создал новый). Visa/Mastercard, крипта. Бонус $100 новым.</p>
+                <p style="margin-top:.5rem;"><a href="#" class="anchor-link" rel="nofollow noreferrer" target="_blank">vultr.com</a></p>
+            </div>
+        </div>
+
+        <p style="margin-top:1.5rem;">Полный рейтинг с промокодами и тестами: <a href="https://vps-dlya-vpn.vercel.app/" class="anchor-link" target="_blank"><strong>vps-dlya-vpn.vercel.app</strong></a></p>
+
+<div class="platform-grid" style="margin-top:1rem;">
+    <div class="platform-card" style="border-color:rgba(9,132,227,.3);">
+        <h4>🇪🇺 VPS в Европе — подборка</h4>
+        <p>10 хостингов с серверами в Германии, Нидерландах, Финляндии, Швеции. Оплата рублями, СБП, криптой. Пинг 30-50 мс из Москвы — идеально для VPN на роутере.</p>
+        <p style="margin-top:.5rem;"><a href="https://vps-v-evrope.vercel.app/" class="anchor-link" target="_blank"><strong>vps-v-evrope.vercel.app →</strong></a></p>
+    </div>
+    <div class="platform-card" style="border-color:rgba(0,184,148,.3);">
+        <h4>💰 Дешёвые VPS — от 99 ₽/мес</h4>
+        <p>Рейтинг бюджетных VPS для тех, кому нужен VPN без переплат. Минимальные тарифы, сравнение цен, промокоды. 1 ядро + 512 МБ за копейки — для роутера хватит.</p>
+        <p style="margin-top:.5rem;"><a href="https://deshevyy-vps.vercel.app/" class="anchor-link" target="_blank"><strong>deshevyy-vps.vercel.app →</strong></a></p>
+    </div>
+</div>
+
+        <div class="tip-box">
+            <strong>Где лучше:</strong> Из Москвы - <strong>Нидерланды или Германия</strong> (пинг 30-60 мс). Из Сибири - <strong>Финляндия или Швеция</strong>. Для YouTube 4K хватит 50 Мбит/с - любой VPS с безлимитом потянет.
+        </div>
+    </div>
+</section>
+
+<!-- УСТРОЙСТВА -->
+<section id="devices">
+    <div class="container">
+        <span class="section-badge">Устройства</span>
+        <h2>Что заработает после настройки VPN на роутере</h2>
+        <p class="section-sub">Всё, что подключено к Wi-Fi, автоматом обходит блокировки</p>
+
+        <div class="platform-grid">
+            <div class="platform-card">
+                <h4>Smart TV (Samsung, LG, Sony)</h4>
+                <p>YouTube, Netflix, Disney+ - всё через стандартные приложения. Ничего дополнительного ставить не надо. На Android TV ещё рекомендуем <a href="https://smarttubeapp.github.io/" class="anchor-link" rel="nofollow" target="_blank">SmartTube</a> - YouTube без рекламы.</p>
+            </div>
+            <div class="platform-card">
+                <h4>PlayStation 5 / Xbox Series X</h4>
+                <p>VPN на роутере - единственный способ для консолей. Roblox, зарубежные магазины с нормальными ценами, мультиплеер - всё работает после настройки маршрутизатора.</p>
+            </div>
+            <div class="platform-card">
+                <h4>iPhone / iPad</h4>
+                <p>На iOS аналогов GoodbyeDPI нет. VPN на роутере избавляет от необходимости постоянно держать VPN-приложение включённым. Дома всё через роутер, на улице - V2Box или Streisand.</p>
+            </div>
+            <div class="platform-card">
+                <h4>Android</h4>
+                <p>Дома обход через роутер. На мобильном 4G/5G вне дома - ByeDPI (обход DPI без VPN) или V2RayTun (VPN с VLESS-ключом).</p>
+            </div>
+            <div class="platform-card">
+                <h4>Ноутбуки и ПК</h4>
+                <p>Через Wi-Fi или по кабелю - обход через роутер. Берёте ноутбук в кафе или офис - поставьте Zapret (Windows) или VPN-клиент дополнительно.</p>
+            </div>
+            <div class="platform-card">
+                <h4>Умные колонки / IoT</h4>
+                <p>Яндекс.Станция, Google Home, камеры, датчики - всё, что в Wi-Fi, автоматом получает доступ через VPN на роутере. Настройка на самих устройствах не нужна.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- КОММЕРЧЕСКИЕ VPN -->
+<section id="commercial">
+    <div class="container">
+        <span class="section-badge">Готовые решения</span>
+        <h2>Коммерческие VPN с поддержкой роутеров</h2>
+        <p class="section-sub">Не хочется возиться с VPS? Есть готовые сервисы с конфигурациями для маршрутизаторов.</p>
+
+        <p>Если VPS и 3X-UI - не ваша история, есть коммерческие VPN-провайдеры с готовыми конфигами для роутеров. Правда, в 2026 большинство из них работает нестабильно: WireGuard и OpenVPN блокируются. Ниже те, у кого есть устойчивые протоколы.</p>
+
+        <div class="platform-grid">
+            <div class="platform-card">
+                <h4>Amnezia VPN</h4>
+                <p>Российский open-source проект. Автоматическая настройка VPS через приложение. AmneziaWG не блокируется DPI. Конфиги для Keenetic и OpenWrt. Бесплатно со своим VPS, платные ключи от 300 руб/мес.</p>
+                <p style="margin-top:.5rem;"><a href="https://amnezia.org/" class="anchor-link" rel="nofollow" target="_blank">amnezia.org</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>Red Shield VPN</h4>
+                <p>Готовые конфиги AmneziaWG и WireGuard для Keenetic, OpenWrt, MikroTik. Подробные инструкции под каждую модель. Оплата рублями.</p>
+                <p style="margin-top:.5rem;"><a href="https://redshieldvpn.com/" class="anchor-link" rel="nofollow" target="_blank">redshieldvpn.com</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>NordVPN</h4>
+                <p>Обфусцированные серверы маскируют трафик. Конфиги OpenVPN для Asus, Keenetic, TP-Link. Работает не у всех провайдеров. Оплата картой или криптой.</p>
+                <p style="margin-top:.5rem;"><a href="#" class="anchor-link" rel="nofollow noreferrer" target="_blank">nordvpn.com</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>Surfshark</h4>
+                <p>Безлимит устройств. Режим NoBorders для обхода цензуры. Конфиги WireGuard и OpenVPN. Бюджетный тариф от $2/мес.</p>
+                <p style="margin-top:.5rem;"><a href="#" class="anchor-link" rel="nofollow noreferrer" target="_blank">surfshark.com</a></p>
+            </div>
+        </div>
+
+        <div class="tip-box warn">
+            <strong>Имейте в виду:</strong> Коммерческие VPN на WireGuard и OpenVPN в России всё чаще блокируются. Свой VPN на VPS с VLESS Reality надёжнее. Коммерческие удобнее, но стабильность не гарантирована.
+        </div>
+    </div>
+</section>
+
+<!-- ПРОВАЙДЕРЫ -->
+<section id="isp">
+    <div class="container wide">
+        <span class="section-badge">Провайдеры</span>
+        <h2>Что работает у какого оператора</h2>
+        <p class="section-sub">ТСПУ у каждого провайдера настроены по-разному. Проверяем совместимость протоколов.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Оператор</th>
+                        <th>WireGuard</th>
+                        <th>AmneziaWG</th>
+                        <th>VLESS Reality</th>
+                        <th>OpenVPN</th>
+                        <th>Zapret</th>
+                        <th>Комментарий</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>МТС</strong></td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅ ALT</td>
+                        <td>WireGuard заблокирован, нужен AmneziaWG</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Билайн</strong></td>
+                        <td>⚠️</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>⚠️</td>
+                        <td>✅</td>
+                        <td>WireGuard то работает, то нет</td>
+                    </tr>
+                    <tr>
+                        <td><strong>МегаФон</strong></td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>Агрессивный DPI, VLESS стабилен</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ростелеком</strong></td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅ ALT</td>
+                        <td>Самый жёсткий DPI, VLESS лучший выбор</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Дом.ру</strong></td>
+                        <td>⚠️</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>⚠️</td>
+                        <td>✅</td>
+                        <td>WireGuard нестабилен с ноября 2025</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Теле2</strong></td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>ТСПУ как у МТС (материнская компания)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Yota</strong></td>
+                        <td>❌</td>
+                        <td>✅</td>
+                        <td>✅</td>
+                        <td>❌</td>
+                        <td>✅ ALT</td>
+                        <td>ТСПУ как у МТС</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size:.8rem;color:var(--text-dim);">✅ работает стабильно. ⚠️ нестабильно. ❌ заблокировано. ALT - надо подбирать стратегию. Данные на февраль 2026.</p>
+    </div>
+</section>
+
+<!-- СКОРОСТЬ -->
+<section id="speed">
+    <div class="container">
+        <span class="section-badge">Скорость</span>
+        <h2>Насколько VPN замедляет интернет через роутер</h2>
+        <p class="section-sub">Реальные замеры на разных моделях</p>
+
+        <p>Шифрование VPN нагружает процессор роутера. Насколько просядет скорость - зависит от мощности CPU и протокола. WireGuard и AmneziaWG используют ChaCha20, который эффективно работает даже на слабых процессорах. VLESS с XTLS-Reality тоже минимально нагружает за счёт «прозрачного» шифрования.</p>
+
+        <div class="table-wrap">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Роутер</th>
+                        <th>Без VPN</th>
+                        <th>AmneziaWG</th>
+                        <th>VLESS Reality</th>
+                        <th>OpenVPN</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Keenetic Giga (KN-1012)</strong></td>
+                        <td>900 Мбит/с</td>
+                        <td>~450 Мбит/с</td>
+                        <td>~350 Мбит/с</td>
+                        <td>~80 Мбит/с</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Keenetic Hopper (KN-3811)</strong></td>
+                        <td>900 Мбит/с</td>
+                        <td>~550 Мбит/с</td>
+                        <td>~400 Мбит/с</td>
+                        <td>~100 Мбит/с</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xiaomi AX3000T (OpenWrt)</strong></td>
+                        <td>900 Мбит/с</td>
+                        <td>~500 Мбит/с</td>
+                        <td>~400 Мбит/с</td>
+                        <td>~90 Мбит/с</td>
+                    </tr>
+                    <tr>
+                        <td><strong>GL.iNet Flint 2</strong></td>
+                        <td>2500 Мбит/с</td>
+                        <td>~900 Мбит/с</td>
+                        <td>~700 Мбит/с</td>
+                        <td>~200 Мбит/с</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Xiaomi Mi 4A Gigabit</strong></td>
+                        <td>300 Мбит/с</td>
+                        <td>~150 Мбит/с</td>
+                        <td>~120 Мбит/с</td>
+                        <td>~30 Мбит/с</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p style="font-size:.8rem;color:var(--text-dim);">Цифры ориентировочные, зависят от удалённости VPS и нагрузки. С раздельным туннелированием замедление только на заблокированных сайтах.</p>
+
+        <div class="tip-box">
+            <strong>Для 4K YouTube</strong> нужно 25 Мбит/с. Даже бюджетный Xiaomi Mi 4A с OpenWrt даст это через AmneziaWG. Семья из 4 человек с несколькими потоками 4K - берите Keenetic Giga или Xiaomi AX3000T.
+        </div>
+    </div>
+</section>
+
+<!-- БЕЗОПАСНОСТЬ -->
+<section id="security">
+    <div class="container">
+        <span class="section-badge">Безопасность</span>
+        <h2>Безопасность и законность</h2>
+        <p class="section-sub">Что надо знать про риски и правовой статус</p>
+
+        <p>Использование VPN для личных целей <strong>не является правонарушением</strong> в России. Законы (276-ФЗ, 90-ФЗ) направлены на операторов VPN-сервисов, которые не выполняют требования РКН, а не на обычных людей. Но правовая ситуация может измениться, так что следите за новостями.</p>
+
+        <p>По технической безопасности: со своим VPS вы полностью контролируете данные - никаких логов, никаких третьих лиц. Все инструменты (3X-UI, Zapret, Podkop, Passwall2) - open-source с открытым кодом на GitHub. Качайте только с официальных репозиториев.</p>
+
+        <div class="tip-box danger">
+            <strong>Не покупайте «готовые VPN-роутеры» на Авито и Wildberries.</strong> В конце 2025 на Habr вышло <a href="https://habr.com/ru/companies/bastion/articles/917522/" class="anchor-link" rel="nofollow" target="_blank">расследование</a>: такие устройства используют чужие WireGuard-конфиги, которые могут быть скомпрометированы или перестать работать когда угодно. Настройте сами - это безопаснее и надёжнее.
+        </div>
+    </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+    <div class="container">
+        <span class="section-badge">FAQ</span>
+        <h2>Частые вопросы</h2>
+        <p class="section-sub">Ответы на то, что спрашивают чаще всего</p>
+
+        <div class="faq-item">
+            <div class="faq-q">Как настроить VPN на роутере для YouTube?</div>
+            <div class="faq-a">На Keenetic: ставите AmneziaWG через OPKG, создаёте конфиг на VPS через Amnezia, импортируете в роутер. На OpenWrt: ставите Podkop, вставляете VLESS-ссылку с VPS. На Asus: VPN Fusion + обфусцированный провайдер. Подробно по шагам - в разделах выше.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Какой роутер взять для VPN?</div>
+            <div class="faq-a">Для простоты - Keenetic Giga или Hopper. Русский интерфейс, WireGuard из коробки, AmneziaWG через OPKG. Для максимума - Xiaomi AX3000T с OpenWrt: дёшево, мощно, свобода полная. Для премиума - GL.iNet Flint 2: OpenWrt из коробки, гигабайт оперативки, Wi-Fi 6.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">VPN на роутере тормозит интернет?</div>
+            <div class="faq-a">С AmneziaWG или WireGuard просадка 5-30% на нормальных роутерах, для YouTube 4K за глаза. С OpenVPN - до 50-70% на слабых моделях. С раздельным туннелированием тормозит только заблокированное, Яндекс и ВК летают на полной скорости.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Можно бесплатно?</div>
+            <div class="faq-a">Zapret на роутере - полностью бесплатно, VPS не нужен. Обходит YouTube и Discord. Для Instagram нужен VPN-туннель, минимальный VPS от 99 руб/мес. В телеграм-каналах есть и бесплатные VLESS-ключи.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Работает ли для Smart TV?</div>
+            <div class="faq-a">Да, это главный плюс. Samsung, LG, Sony - любой телевизор на Wi-Fi автоматом получает доступ к YouTube, Netflix и остальному через стандартные приложения. На Android TV ещё SmartTube рекомендуем - YouTube без рекламы.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Как пустить только YouTube через VPN?</div>
+            <div class="faq-a">На OpenWrt: Podkop - он сам маршрутизирует по доменам. Добавляете youtube.com, googlevideo.com, discord.com - только они через туннель. На Keenetic: в AllowedIPs прописываете нужные подсети. На Asus: VPN Fusion выбираете устройства.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">AmneziaWG или VLESS - что лучше?</div>
+            <div class="faq-a">AmneziaWG: проще настроить на Keenetic, очень быстрый, DPI не видит. VLESS Reality: максимально устойчив (маскируется под HTTPS), идеален для OpenWrt с Podkop. У МТС или Ростелеком с жёстким DPI - VLESS. У остальных - AmneziaWG проще и быстрее.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">А для PlayStation 5 и Xbox?</div>
+            <div class="faq-a">Настраиваете VPN на роутере любым способом. Подключаете консоль к Wi-Fi - весь трафик автоматом через туннель. Roblox, магазины, мультиплеер - всё работает.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Мой роутер не поддерживает VPN. Что делать?</div>
+            <div class="faq-a">Три пути: 1) Перешить на OpenWrt, если модель подходит (проверяйте openwrt.org). 2) Купить второй роутер для VPN (Xiaomi AX3000T от 2500 руб) и подключить каскадом. 3) Запустить Zapret на компьютере и раздать по сети - но работает только пока комп включён.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">WireGuard на роутере перестал работать</div>
+            <div class="faq-a">В 2025-2026 РКН начал блокировать обычный WireGuard через DPI. Переходите на AmneziaWG (модифицированный WireGuard, DPI не видит). На Keenetic ставите amneziawg-go через OPKG. На OpenWrt - меняете wg-клиент на AmneziaWG. Или переходите на VLESS Reality.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Что такое Podkop?</div>
+            <div class="faq-a">Open-source тулза для OpenWrt. Указываете домены (YouTube, Discord, Instagram) - только они идут через VPN. Остальное напрямую. Поддерживает VLESS, Trojan, Hysteria2. Ставится: opkg install podkop luci-app-podkop. Сайт: podkop.net.</div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-q">Законно ли это?</div>
+            <div class="faq-a">VPN для личных целей - не правонарушение. Закон направлен на операторов VPN-сервисов, не на пользователей. Но ситуация может измениться. Свой VPN на VPS - наиболее безопасный вариант, вы ни от кого не зависите.</div>
+        </div>
+    </div>
+</section>
+
+<!-- ХРОНОЛОГИЯ -->
+<section id="updates">
+    <div class="container">
+        <span class="section-badge">Хронология</span>
+        <h2>Что происходило в 2024-2026</h2>
+        <p class="section-sub">Ключевые события, которые влияют на работу VPN на роутерах</p>
+
+        <div class="guide-block">
+            <h3>Февраль 2026</h3>
+            <p>AmneziaWG 2.0 вышел с поддержкой KeeneticOS 5.0.4 - улучшенная обфускация, каскадный метод. Podkop получил автообновление списков заблокированных ресурсов. Роскомнадзор анонсировал ИИ-систему фильтрации за 2,3 млрд рублей.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>Январь 2026</h3>
+            <p>Видеогайд «VPN на роутере в 2026: OpenWRT, VLESS XHTTP, Trojan» набрал миллионы просмотров - народ массово переходит на роутерные VPN. Passwall2 получил поддержку VLESS+XHTTP - нового транспорта, мимикрирующего под HTTP.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>Октябрь-декабрь 2025</h3>
+            <p>Массовая блокировка WireGuard и OpenVPN через DPI у всех крупных провайдеров. У людей с WireGuard на роутерах пропал VPN. Массовый переход на AmneziaWG и VLESS Reality. На Habr вышло расследование про «VPN-роутеры» с Авито - скомпрометированные конфиги.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>Август-октябрь 2024</h3>
+            <p>Замедление YouTube (август), блокировка Discord (октябрь). Взрывной рост интереса к VPN на роутерах. Keenetic с WireGuard стал самым обсуждаемым решением. Запуск Podkop для OpenWrt. Zapret от bol-van получил поддержку Keenetic через OPKG.</p>
+        </div>
+    </div>
+</section>
+
+<!-- СЛОВАРЬ -->
+<section id="glossary">
+    <div class="container">
+        <span class="section-badge">Словарь</span>
+        <h2>Термины простым языком</h2>
+
+        <div class="guide-block">
+            <h3>VPN на роутере</h3>
+            <p>Домашний Wi-Fi маршрутизатор с настроенным VPN-клиентом. Все устройства на Wi-Fi автоматом получают защищённое соединение и обход блокировок без дополнительных программ.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>AmneziaWG</h3>
+            <p>Модифицированный WireGuard от российского проекта Amnezia. Добавлена обфускация - ТСПУ не отличает AmneziaWG от обычного трафика и не может его заблокировать. Быстрый, низкие задержки.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>VLESS Reality</h3>
+            <p>VPN-протокол нового поколения. Маскирует трафик под обычный HTTPS к реальному сайту (например, microsoft.com). ТСПУ видит нормальный TLS-хендшейк и пропускает. Самый устойчивый к блокировкам на 2026 год.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>Podkop</h3>
+            <p>Тулза для OpenWrt, которая рулит раздельным туннелированием по доменам. Указываешь какие сайты через VPN, остальные напрямую. Поддерживает VLESS, Trojan, Hysteria2, Shadowsocks.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>OPKG / Entware</h3>
+            <p>Менеджер пакетов для установки доп. софта на Keenetic. Entware - репозиторий с тысячами пакетов. Через них ставится Zapret, Xray, AmneziaWG и прочее.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>OpenWrt</h3>
+            <p>Свободная ОС для роутеров на базе Linux. Заменяет стоковую прошивку и даёт полный контроль: VPN, файрвол, QoS, раздельное туннелирование. Поддерживается на сотнях моделей.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>Раздельное туннелирование (Split Tunneling)</h3>
+            <p>Через VPN идёт только часть трафика (YouTube, Discord), остальной напрямую. Сохраняется скорость для российских сервисов, снижается нагрузка на VPS.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>ТСПУ</h3>
+            <p>Оборудование DPI, установленное Роскомнадзором у провайдеров. Анализирует трафик и блокирует или замедляет запрещённые ресурсы. Именно ТСПУ тормозит YouTube и блокирует Discord.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>3X-UI</h3>
+            <p>Веб-панель управления для Xray-core. Ставится на VPS одной командой, даёт удобный графический интерфейс для создания подключений, генерации QR-кодов и мониторинга.</p>
+        </div>
+
+        <div class="guide-block">
+            <h3>Zapret / nfqws</h3>
+            <p>Open-source утилита для обхода DPI. Меняет структуру TCP-пакетов (фрагментация, десинхронизация) так, что ТСПУ не распознаёт запросы к YouTube и Discord. Работает без VPS - трафик идёт напрямую на полной скорости.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ССЫЛКИ -->
+<section id="related">
+    <div class="container">
+        <span class="section-badge">Полезное</span>
+        <h2>Связанные гайды и ресурсы</h2>
+
+        <div class="platform-grid">
+            <div class="platform-card">
+                <h4>VPS для VPN - рейтинг</h4>
+                <p>Сравнение 10 хостингов для личного VPN: цены, скорости, чистота IP, оплата рублями. Промокоды и инструкция по 3X-UI.</p>
+                <p style="margin-top:.5rem;"><a href="https://vps-dlya-vpn.vercel.app/" class="anchor-link" target="_blank">vps-dlya-vpn.vercel.app</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>Обход блокировок 2026</h4>
+                <p>Гайд по GoodbyeDPI, Zapret, ByeDPI, VPN. Инструкции для Windows, Android, iPhone, Smart TV. Таблица по провайдерам.</p>
+                <p style="margin-top:.5rem;"><a href="https://obhod-blokirovki.vercel.app/" class="anchor-link" target="_blank">obhod-blokirovki.vercel.app</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>Podkop - документация</h4>
+                <p>Официальный FAQ, инструкции по установке. Раздельное туннелирование по доменам для OpenWrt.</p>
+                <p style="margin-top:.5rem;"><a href="https://podkop.net/" class="anchor-link" rel="nofollow" target="_blank">podkop.net</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>Amnezia VPN - документация</h4>
+                <p>Инструкции по AmneziaWG для Keenetic, OpenWrt, MikroTik. Автонастройка VPS через приложение.</p>
+                <p style="margin-top:.5rem;"><a href="https://docs.amnezia.org/ru/" class="anchor-link" rel="nofollow" target="_blank">docs.amnezia.org</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>Keenetic - база знаний</h4>
+                <p>Официальные инструкции: OPKG, WireGuard, VPN-клиент, политики маршрутизации.</p>
+                <p style="margin-top:.5rem;"><a href="https://help.keenetic.com/hc/ru" class="anchor-link" rel="nofollow" target="_blank">help.keenetic.com</a></p>
+            </div>
+            <div class="platform-card">
+                <h4>OpenWrt - совместимость</h4>
+                <p>Проверьте, поддерживает ли ваш роутер OpenWrt. База моделей с характеристиками.</p>
+                <p style="margin-top:.5rem;"><a href="https://openwrt.org/toh/start" class="anchor-link" rel="nofollow" target="_blank">openwrt.org/toh</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <p>© 2026 vpn-dlya-routera.vercel.app - гайд по настройке VPN на домашнем роутере</p>
+    <p style="margin-top:.5rem;">Все упомянутые инструменты - open-source. Мы не храним данные и не являемся VPN-провайдером.</p>
+    <p style="margin-top:.5rem;">
+        Источники:
+        <a href="https://docs.amnezia.org/ru/" rel="nofollow" target="_blank">Amnezia Docs</a> ·
+        <a href="https://podkop.net/" rel="nofollow" target="_blank">Podkop</a> ·
+        <a href="https://github.com/bol-van/zapret" rel="nofollow" target="_blank">Zapret</a> ·
+        <a href="https://help.keenetic.com/hc/ru" rel="nofollow" target="_blank">Keenetic</a> ·
+        <a href="https://openwrt.org/" rel="nofollow" target="_blank">OpenWrt</a> ·
+        <a href="https://github.com/xiaorouji/openwrt-passwall2" rel="nofollow" target="_blank">Passwall2</a> ·
+        <a href="https://habr.com/ru/articles/847948/" rel="nofollow" target="_blank">Habr</a> ·
+        <a href="https://4pda.to/forum/index.php?showtopic=1085698" rel="nofollow" target="_blank">4PDA</a>
+    </p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(q) {
+    q.addEventListener('click', function() {
+        this.parentElement.classList.toggle('open');
+    });
+});
+</script>
+
+</body>
+</html>
